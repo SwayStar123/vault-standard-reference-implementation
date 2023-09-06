@@ -5,3 +5,4 @@ license = "Apache-2.0"
 name = "vault-standard-reference-implementation"
 
 [dependencies]
+token = { git = "https://github.com/FuelLabs/sway-libs" }
