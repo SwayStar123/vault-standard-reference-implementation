@@ -170,21 +170,21 @@ fn managed_assets(asset: AssetId) -> u64 {
 
 #[storage(read)]
 fn preview_deposit(asset: AssetId, assets: u64) -> u64 {
-    let supply = storage.total_supply.get(asset).read();
-    if supply == 0 {
+    let shares_supply = storage.total_supply.get(AssetId::new(ContractId::this(), asset.into())).read();
+    if shares_supply == 0 {
         assets
     } else {
-        assets * supply / managed_assets(asset)
+        assets * shares_supply / managed_assets(asset)
     }
 }
 
 #[storage(read)]
 fn preview_withdraw(asset: AssetId, shares: u64) -> u64 {
-    let supply = storage.total_supply.get(asset).read();
-    if supply == 0 {
-        shares
+    let supply = storage.total_supply.get(AssetId::new(ContractId::this(), asset.into())).read();
+    if supply == shares {
+        managed_assets(asset)
     } else {
-        shares * supply / managed_assets(asset)
+        shares * (managed_assets(asset) / supply)
     }
 }
 
