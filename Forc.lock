@@ -1,13 +1,27 @@
 [[package]]
-name = 'core'
-source = 'path+from-root-B313E39BF6A5D375'
+name = "core"
+source = "path+from-root-AD80769CAE44474A"
 
 [[package]]
-name = 'std'
-source = 'git+https://github.com/fuellabs/sway?tag=v0.39.1#e3065657c907225a8fdfe2d2210a7a3bd2b55c73'
-dependencies = ['core']
+name = "src_20"
+source = "git+https://github.com/FuelLabs/sway-standards?default-branch#5eadf8d3fb5d57d8a6e01fa8acbe25738dffbb7d"
+dependencies = ["std"]
 
 [[package]]
-name = 'vault-standard-reference-implementation'
-source = 'member'
-dependencies = ['std']
+name = "std"
+source = "git+https://github.com/fuellabs/sway?tag=v0.46.0#e75f14b03636bc96751a6760304a1a6d3eb5937d"
+dependencies = ["core"]
+
+[[package]]
+name = "token"
+source = "git+https://github.com/FuelLabs/sway-libs?default-branch#6847dd9994c70834692c101a368ba1f69beca170"
+dependencies = ["std"]
+
+[[package]]
+name = "vault-standard-reference-implementation"
+source = "member"
+dependencies = [
+    "src_20",
+    "std",
+    "token",
+]

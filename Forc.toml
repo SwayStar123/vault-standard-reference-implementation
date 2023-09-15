@@ -6,3 +6,4 @@ name = "vault-standard-reference-implementation"
 
 [dependencies]
 token = { git = "https://github.com/FuelLabs/sway-libs" }
+src_20 = { git = "https://github.com/FuelLabs/sway-standards"}
