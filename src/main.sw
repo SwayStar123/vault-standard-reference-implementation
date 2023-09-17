@@ -70,9 +70,9 @@ abi SRC6 {
     #[storage(read)]
     fn managed_assets(asset: AssetId) -> u64;
     #[storage(read)]
-    fn convert_to_shares(asset: AssetId, assets: u64) -> u64;
+    fn convert_to_shares(asset: AssetId, assets: u64) -> Option<u64>;
     #[storage(read)]
-    fn convert_to_assets(asset: AssetId, shares: u64) -> u64;
+    fn convert_to_assets(asset: AssetId, shares: u64) -> Option<u64>;
     #[storage(read)]
     fn preview_deposit(asset: AssetId, assets: u64) -> u64;
     #[storage(read)]
@@ -134,13 +134,13 @@ impl SRC6 for Contract {
     }
 
     #[storage(read)]
-    fn convert_to_shares(asset: AssetId, assets: u64) -> u64 {
-        preview_deposit(asset, assets)
+    fn convert_to_shares(asset: AssetId, assets: u64) -> Option<u64> {
+        Option::Some(preview_deposit(asset, assets))
     }
 
     #[storage(read)]
-    fn convert_to_assets(asset: AssetId, shares: u64) -> u64 {
-        preview_withdraw(asset, shares)
+    fn convert_to_assets(asset: AssetId, shares: u64) -> Option<u64> {
+        Option::Some(preview_withdraw(asset, shares))
     }
 
     #[storage(read)]
