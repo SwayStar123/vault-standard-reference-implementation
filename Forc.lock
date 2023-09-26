@@ -14,7 +14,7 @@ dependencies = ["core"]
 
 [[package]]
 name = "token"
-source = "git+https://github.com/FuelLabs/sway-libs?default-branch#6847dd9994c70834692c101a368ba1f69beca170"
+source = "git+https://github.com/FuelLabs/sway-libs?default-branch#d52b60aa7a85c3ac04761320eccabac190828321"
 dependencies = ["std"]
 
 [[package]]
